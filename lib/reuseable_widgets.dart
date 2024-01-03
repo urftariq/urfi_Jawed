@@ -107,7 +107,7 @@ class kuchbhi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
       width: double.infinity,
       height: 150,
       decoration: BoxDecoration(
@@ -121,3 +121,58 @@ class kuchbhi extends StatelessWidget {
     );
   }
 }
+
+class MovieStack extends StatelessWidget {
+  const MovieStack({
+    Key? key,
+    required this.image,
+    required this.movieName,
+    required this.network,
+    required this.startDate,
+    required this.status
+  }) : super(key: key);
+
+  final String image;
+  final String movieName;
+  final String startDate;
+  final String network;
+  final String status;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+        children: [
+        Container(
+        color: Colors.black,
+        width: double.infinity,
+        height: 80,
+        margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+    child: Row(
+    children: [
+    Container(
+    width: 120,
+    height: 60,
+    decoration: BoxDecoration(
+    //color: Colors.blue,
+    borderRadius: BorderRadius.circular(20),
+    image: DecorationImage(
+    image: NetworkImage(image)
+
+    )
+    ),
+    ),
+    Container(
+    margin: const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+    child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children:  [
+    Text(movieName,style: const TextStyle(color: Colors.white),),
+    Text(startDate,style: const TextStyle(color: Colors.white),),
+    Text(network,style: const TextStyle(color: Colors.white),),
+    Text(status,style: const TextStyle(color: Colors.white),)
+    ],
+    ),
+    )
+    ],
+    ),
+    )]);}}

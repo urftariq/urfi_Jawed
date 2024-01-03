@@ -1,5 +1,6 @@
 import 'package:fastpro/reuseable_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ListViewScreen extends StatefulWidget {
   const ListViewScreen({super.key});
@@ -21,9 +22,22 @@ class _ListViewScreenState extends State<ListViewScreen> {
         body: ListView.builder(
           itemCount: 5,
             itemBuilder: (context, index) {
-              return kuchbhi(
-                  kuchbhinaam: names[index],
-                  kuchbhitasver: '');
+              return InkWell(
+                onTap: (){
+                  Fluttertoast.showToast(
+                      msg: names[index],
+                      toastLength: Toast.LENGTH_LONG,
+                      gravity: ToastGravity.BOTTOM,
+                      timeInSecForIosWeb: 1,
+                      backgroundColor: Colors.red,
+                      textColor: Colors.white,
+                      fontSize: 16.0
+                  );
+                },
+                child: kuchbhi(
+                    kuchbhinaam: names[index],
+                    kuchbhitasver: ''),
+              );
             },)
       ),
     );
